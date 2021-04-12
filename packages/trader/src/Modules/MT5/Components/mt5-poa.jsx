@@ -116,6 +116,10 @@ const MT5POA = ({ onSave, onCancel, index, onSubmit, refreshNotifications, ...pr
     const onFileDrop = (files, error_message, setFieldTouched, setFieldValue, values) => {
         setFieldTouched('document_file', true);
         setFieldValue('document_file', files);
+
+        setTimeout(() => {
+            setFieldTouched('address_postcode', true);
+        }, 1000);
         setDocumentUpload({ files, error_message }, () => {
             // To resolve sync issues with value states (form_values in container component and formik values)
             // This ensures container values are updated before being validated in runtime  (mt5-financial-stp-real-account-signup.jsx)
@@ -125,6 +129,25 @@ const MT5POA = ({ onSave, onCancel, index, onSubmit, refreshNotifications, ...pr
         });
     };
 
+    const testing = (setFieldTouched, touched) => {
+        // setFieldTouched('address_line_1', true)
+        // setFieldTouched('address_line_2', true)
+        // setFieldTouched('address_city', true)
+        // setFieldTouched('address_postcode', true)
+
+        alert(touched);
+    };
+    const testTouch = (Ftouched, STouched, touched, errors) => {
+        Ftouched('address_line_1', true);
+        Ftouched('address_line_2', true);
+        Ftouched('address_city', true);
+        Ftouched('address_postcode', true);
+
+        STouched({
+            name: true,
+        });
+        alert(123, touched, errors);
+    };
     const onProceed = () => {
         const { files, error_message } = document_upload;
         onSubmit(index, {
@@ -261,6 +284,7 @@ const MT5POA = ({ onSave, onCancel, index, onSubmit, refreshNotifications, ...pr
                 handleChange,
                 setFieldTouched,
                 setFieldValue,
+                setTouched,
                 values,
                 touched,
             }) => (
@@ -375,15 +399,16 @@ const MT5POA = ({ onSave, onCancel, index, onSubmit, refreshNotifications, ...pr
                                                 <FileUploaderContainer
                                                     onRef={ref => (file_uploader_ref = ref)}
                                                     getSocket={WS.getSocket}
-                                                    onFileDrop={df =>
+                                                    onFileDrop={df => {
                                                         onFileDrop(
                                                             df.files,
                                                             df.error_message,
                                                             setFieldTouched,
                                                             setFieldValue,
                                                             values
-                                                        )
-                                                    }
+                                                        );
+                                                        testing(setFieldTouched, JSON.stringify(touched));
+                                                    }}
                                                 />
                                             </div>
                                         </div>
