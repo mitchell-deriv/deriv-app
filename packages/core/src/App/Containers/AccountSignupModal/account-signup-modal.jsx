@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import { Field, Formik, Form } from 'formik';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Dialog, Loading, PasswordInput, PasswordMeter, Text } from '@deriv/components';
 import {
+    isMobile,
     validPassword,
     getLocation,
     validLength,
@@ -12,6 +12,8 @@ import {
     PlatformContext,
     redirectToSignUp,
 } from '@deriv/shared';
+import { Button, Dialog, Loading, PasswordInput, PasswordMeter, Text } from '@deriv/components';
+
 import { localize, Localize } from '@deriv/translations';
 import { WS } from 'Services';
 import { connect } from 'Stores/connect';
@@ -125,7 +127,6 @@ const AccountSignup = ({ enableApp, isModalVisible, clients_country, onSignup, r
                         <Form>
                             {!has_valid_residence ? (
                                 <ResidenceForm
-                                    header_text={localize('Thanks for verifying your email')}
                                     class_prefix='account-signup'
                                     errors={errors}
                                     touched={touched}
@@ -134,6 +135,7 @@ const AccountSignup = ({ enableApp, isModalVisible, clients_country, onSignup, r
                                     residence_list={residence_list}
                                     default_value={country}
                                 >
+                                    {!isMobile() && <div className='account-signup__separator' />}
                                     <Button
                                         className={classNames('account-signup__btn', {
                                             'account-signup__btn--disabled': !values.residence || errors.residence,
@@ -262,6 +264,8 @@ const AccountSignupModal = ({
             is_loading={is_loading || !residence_list.length}
             is_mobile_full_width={false}
             is_content_centered
+            title={localize('Thanks for verifying your email')}
+            is_header_centered
         >
             <AccountSignup
                 clients_country={clients_country}

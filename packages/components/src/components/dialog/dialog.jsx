@@ -47,6 +47,7 @@ const Dialog = ({
         is_content_centered,
         portal_element_id,
         title,
+        is_header_centered,
         has_close_icon,
     } = other_props;
 
@@ -76,20 +77,46 @@ const Dialog = ({
                 <div
                     className={classNames('dc-dialog__dialog', {
                         'dc-dialog__dialog--has-margin': !is_mobile_full_width,
+                        'dc-dialog__dialog--no-padding': is_header_centered,
                     })}
                 >
-                    <div className='dc-dialog__header-wrapper'>
-                        {!!title && (
-                            <Text as='h1' color='prominent' weight='bold' className='dc-dialog__header'>
-                                {title}
-                            </Text>
-                        )}
-                        {has_close_icon && (
-                            <div onClick={onCancel ? handleCancel : handleConfirm} className='dc-dialog__header--close'>
-                                <Icon icon='IcCross' />
-                            </div>
-                        )}
-                    </div>
+                    {is_header_centered ? (
+                        <div className='dc-dialog__header-wrapper__centered'>
+                            <Icon
+                                className='advertiser-page__header-verification-icon'
+                                icon='IcCashierVerificationBadge'
+                                size={isMobile() ? 30 : 35}
+                            />
+                            {!!title && (
+                                <Text
+                                    as='h1'
+                                    align='center'
+                                    color='prominent'
+                                    weight='bold'
+                                    className='dc-dialog__header'
+                                    size={isMobile() ? 'xs' : 'sm'}
+                                >
+                                    {title}
+                                </Text>
+                            )}
+                        </div>
+                    ) : (
+                        <div className='dc-dialog__header-wrapper'>
+                            {!!title && (
+                                <Text as='h1' color='prominent' weight='bold' className='dc-dialog__header'>
+                                    {title}
+                                </Text>
+                            )}
+                            {has_close_icon && (
+                                <div
+                                    onClick={onCancel ? handleCancel : handleConfirm}
+                                    className='dc-dialog__header--close'
+                                >
+                                    <Icon icon='IcCross' />
+                                </div>
+                            )}
+                        </div>
+                    )}
                     {is_text ? (
                         <Text as='p' size='xs' styles={{ lineHeight: '1.43' }} className={content_classes}>
                             {children}

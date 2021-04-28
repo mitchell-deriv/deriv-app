@@ -1,7 +1,14 @@
 /* @define account-signup; weak */
 .account-signup {
-    margin: 1.6rem 1.6rem 0;
+    margin: 2.1rem 1.6rem 1.1rem;
 
+    &__separator {
+        position: absolute;
+        bottom: 20%;
+        height: 2px;
+        background-color: var(--general-section-2);
+        width: 100%;
+    }
     &__error-wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -22,7 +29,6 @@
 
         @include mobile {
             width: 100%;
-            max-width: 30rem;
         }
     }
     &__residence-selection {
@@ -75,6 +81,7 @@
     &__btn {
         align-self: flex-end;
         margin: 0;
+        margin-top: 4.1rem;
         background-color: var(--button-primary-default);
         font-weight: bold;
         color: var(--text-colored-background);
@@ -92,7 +99,7 @@
         }
     }
     &__residence-field {
-        margin-bottom: 3.2rem;
+        margin-bottom: 7.2rem;
 
         @include desktop {
             min-width: 30rem;
