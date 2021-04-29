@@ -72,6 +72,7 @@ const Dialog = ({
             <div
                 className={classNames('dc-dialog__wrapper', className, {
                     'dc-dialog__wrapper--has-portal': !!portal_element_id,
+                    'dc-dialog__wrapper--white': is_header_centered,
                 })}
             >
                 <div
@@ -84,7 +85,7 @@ const Dialog = ({
                         <div className='dc-dialog__header-wrapper__centered'>
                             <Icon
                                 className='advertiser-page__header-verification-icon'
-                                icon='IcCashierVerificationBadge'
+                                icon='IcVerify'
                                 size={isMobile() ? 30 : 35}
                             />
                             {!!title && (

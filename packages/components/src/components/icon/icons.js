@@ -2,13 +2,16 @@
 
 import './brand/ic-brand-binarybot.svg';
 import './brand/ic-brand-dbot.svg';
+import './brand/ic-brand-dcom.svg';
 import './brand/ic-brand-deriv-apps.svg';
+import './brand/ic-brand-deriv-text.svg';
 import './brand/ic-brand-deriv.svg';
 import './brand/ic-brand-dmt5-financial-stp.svg';
 import './brand/ic-brand-dmt5-financial.svg';
 import './brand/ic-brand-dmt5-synthetics.svg';
 import './brand/ic-brand-dmt5.svg';
 import './brand/ic-brand-dtrader.svg';
+import './brand/ic-brand-get-started.svg';
 import './brand/ic-brand-smarttrader.svg';
 import './cashier/ic-cashier-air-tm-dark.svg';
 import './cashier/ic-cashier-air-tm-light.svg';

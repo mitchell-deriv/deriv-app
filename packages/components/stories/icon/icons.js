@@ -4,13 +4,16 @@ export const icons = {
     brand: [
         'IcBrandBinarybot',
         'IcBrandDbot',
+        'IcBrandDcom',
         'IcBrandDerivApps',
+        'IcBrandDerivText',
         'IcBrandDeriv',
         'IcBrandDmt5FinancialStp',
         'IcBrandDmt5Financial',
         'IcBrandDmt5Synthetics',
         'IcBrandDmt5',
         'IcBrandDtrader',
+        'IcBrandGetStarted',
         'IcBrandSmarttrader',
     ],
     cashier: [

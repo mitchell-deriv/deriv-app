@@ -51,6 +51,9 @@
         &--has-portal {
             background-color: transparent;
         }
+        &--white {
+            background-color: $color-white;
+        }
     }
     &__dialog {
         max-width: 560px;
@@ -80,15 +83,15 @@
 
             &__centered {
                 justify-content: center;
-                border-radius: 8px;
-                svg {
-                    margin: 23px 9px 1px 11px;
-                }
+                border-radius: 8px 8px 0 0;
                 display: flex;
                 width: 100%;
                 background-color: $color-grey-2;
                 h1 {
                     padding-top: 25px;
+                }
+                svg {
+                    margin: 23px 9px 1px 11px;
                 }
             }
         }
