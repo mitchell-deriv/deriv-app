@@ -54,41 +54,55 @@ const SignupOnboardingHeader = ({
     toggleAccountsDialog,
     toggleNotifications,
 }) => {
-    const toggle_menu_drawer_ref = React.useRef(null);
-    const addUpdateNotification = () => addNotificationMessage(clientNotifications().new_version_available);
-    const removeUpdateNotification = React.useCallback(
-        () => removeNotificationMessage({ key: 'new_version_available' }),
-        [removeNotificationMessage]
-    );
-
+    const icons = [
+        {
+            id: 1,
+            name: 'IcBrandDtrader',
+            height: 35,
+            width: 25,
+        },
+        {
+            id: 2,
+            name: 'IcBrandDerivText',
+            height: 50,
+            width: 150,
+        },
+        {
+            id: 3,
+            name: 'IcSeparator',
+            height: 30,
+            width: 2,
+        },
+        {
+            id: 4,
+            name: 'IcBrandGetStarted',
+            height: 50,
+            width: 150,
+        },
+    ];
+    const Icons = ({ size = 0 }) => {
+        return icons.map((icon, idx) => (
+            <Icon
+                key={idx}
+                className='signup-onboarding-header__menu-center-icon'
+                icon={icon.name}
+                color={'brand'}
+                height={icon.id !== 1 && icon.id !== 3 ? icon.height - size : icon.height}
+                width={icon.id !== 1 && icon.id !== 3 ? icon.width - size : icon.width}
+            />
+        ));
+    };
     return (
+        //To implement URL for icons
         <header className={classNames('signup-onboarding-header')}>
-            <DesktopWrapper>
-                <div className={classNames('signup-onboarding-header__menu-center')}>
-                    {/* <Icon
-                        className='advertiser-page__header-verification-icon'
-                        icon='IcBrandDerivText'
-                        height={50}
-                        width={150}
-                            /> */}
-                    <Icon
-                        className='advertiser-page__header-verification-icon'
-                        icon='IcBrandDerivText'
-                        color={'brand'}
-                        height={50}
-                        width={150}
-                    />
-                    <Icon
-                        className='advertiser-page__header-verification-icon'
-                        icon='IcBrandGetStarted'
-                        color={'brand'}
-                        height={50}
-                        width={150}
-                    />
-                </div>
-            </DesktopWrapper>
-
-            <MobileWrapper>gdgd</MobileWrapper>
+            <div className={classNames('signup-onboarding-header__menu-center')}>
+                <DesktopWrapper>
+                    <Icons />
+                </DesktopWrapper>
+                <MobileWrapper>
+                    <Icons size={20} />
+                </MobileWrapper>
+            </div>
         </header>
     );
 };

@@ -322,6 +322,7 @@ export const icons = {
         'IcSecurityAndPrivacy',
         'IcSecurity',
         'IcSendMessage',
+        'IcSeparator',
         'IcSort',
         'IcStage1',
         'IcStage2',

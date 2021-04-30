@@ -3,7 +3,7 @@
     position: fixed;
     z-index: 99999999;
     box-sizing: border-box;
-    height: $HEADER_HEIGHT;
+    height: $HEADER_HEIGHT_SIGNUP;
     width: 100%;
     top: 0;
     transition: opacity 0.3s;
@@ -16,6 +16,11 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+        height: inherit;
+
+        &-icon {
+            margin: 0 5px;
+        }
     }
     &--is-disabled:after {
         opacity: 1;
@@ -235,7 +240,7 @@
         vertical-align: middle;
     }
     @include mobile {
-        height: $MOBILE_HEADER_HEIGHT;
+        height: $MOBILE_HEADER_HEIGHT_SIGNUP;
 
         .header__menu-left,
         .header__menu-right {

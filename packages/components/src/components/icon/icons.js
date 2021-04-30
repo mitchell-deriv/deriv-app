@@ -316,6 +316,7 @@ import './common/ic-search.svg';
 import './common/ic-security-and-privacy.svg';
 import './common/ic-security.svg';
 import './common/ic-send-message.svg';
+import './common/ic-separator.svg';
 import './common/ic-sort.svg';
 import './common/ic-stage1.svg';
 import './common/ic-stage2.svg';
