@@ -2,18 +2,8 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { DesktopWrapper, MobileWrapper, Icon } from '@deriv/components';
-import { routes, isMobile, getDecimalPlaces, getPlatformInformation } from '@deriv/shared';
-import { AccountActions, MenuLinks, PlatformSwitcher } from 'App/Components/Layout/Header';
-import platform_config from 'App/Constants/platform-config';
-import RealAccountSignup from 'App/Containers/RealAccountSignup';
-import SetAccountCurrencyModal from 'App/Containers/SetAccountCurrencyModal';
-import NewVersionNotification from 'App/Containers/new-version-notification.jsx';
+import { DesktopWrapper, MobileWrapper, Icon, StaticUrl } from '@deriv/components';
 import { connect } from 'Stores/connect';
-import { clientNotifications } from 'Stores/Helpers/client-notifications';
-import ToggleMenuDrawer from 'App/Components/Layout/Header/toggle-menu-drawer.jsx';
-import { AccountsInfoLoader } from 'App/Components/Layout/Header/Components/Preloader';
-import TempAppSettings from 'App/Containers/Layout/temp-app-settings.jsx';
 
 const SignupOnboardingHeader = ({
     acc_switcher_disabled_message,
@@ -58,7 +48,7 @@ const SignupOnboardingHeader = ({
         {
             id: 1,
             name: 'IcBrandDtrader',
-            height: 35,
+            height: 50,
             width: 25,
         },
         {
@@ -93,15 +83,16 @@ const SignupOnboardingHeader = ({
         ));
     };
     return (
-        //To implement URL for icons
         <header className={classNames('signup-onboarding-header')}>
             <div className={classNames('signup-onboarding-header__menu-center')}>
-                <DesktopWrapper>
-                    <Icons />
-                </DesktopWrapper>
-                <MobileWrapper>
-                    <Icons size={20} />
-                </MobileWrapper>
+                <StaticUrl href='/'>
+                    <DesktopWrapper>
+                        <Icons />
+                    </DesktopWrapper>
+                    <MobileWrapper>
+                        <Icons size={20} />
+                    </MobileWrapper>
+                </StaticUrl>
             </div>
         </header>
     );

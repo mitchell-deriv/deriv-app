@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
+import { isMobile } from '@deriv/shared';
 import Button from '../button/button.jsx';
 import Icon from '../icon/icon.jsx';
 import Text from '../text';
@@ -47,7 +48,7 @@ const Dialog = ({
         is_content_centered,
         portal_element_id,
         title,
-        is_header_centered,
+        is_signup,
         has_close_icon,
     } = other_props;
 
@@ -72,34 +73,32 @@ const Dialog = ({
             <div
                 className={classNames('dc-dialog__wrapper', className, {
                     'dc-dialog__wrapper--has-portal': !!portal_element_id,
-                    'dc-dialog__wrapper--white': is_header_centered,
+                    'dc-dialog__wrapper--white': is_signup,
                 })}
             >
                 <div
                     className={classNames('dc-dialog__dialog', {
                         'dc-dialog__dialog--has-margin': !is_mobile_full_width,
-                        'dc-dialog__dialog--no-padding': is_header_centered,
+                        'dc-dialog__dialog--no-padding': is_signup,
                     })}
                 >
-                    {is_header_centered ? (
+                    {is_signup && title ? (
                         <div className='dc-dialog__header-wrapper__centered'>
                             <Icon
                                 className='advertiser-page__header-verification-icon'
                                 icon='IcVerify'
                                 size={isMobile() ? 30 : 35}
                             />
-                            {!!title && (
-                                <Text
-                                    as='h1'
-                                    align='center'
-                                    color='prominent'
-                                    weight='bold'
-                                    className='dc-dialog__header'
-                                    size={isMobile() ? 'xs' : 'sm'}
-                                >
-                                    {title}
-                                </Text>
-                            )}
+                            <Text
+                                as='h1'
+                                align='center'
+                                color='prominent'
+                                weight='bold'
+                                className='dc-dialog__header'
+                                size={isMobile() ? 'xs' : 'sm'}
+                            >
+                                {title}
+                            </Text>
                         </div>
                     ) : (
                         <div className='dc-dialog__header-wrapper'>

@@ -18,6 +18,10 @@
         flex-wrap: wrap;
         height: inherit;
 
+        a {
+            display: contents;
+        }
+
         &-icon {
             margin: 0 5px;
         }

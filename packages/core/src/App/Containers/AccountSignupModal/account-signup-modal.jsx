@@ -56,7 +56,7 @@ const validateSignup = (values, residence_list) => {
     return errors;
 };
 
-const AccountSignup = ({ enableApp, isModalVisible, clients_country, onSignup, residence_list }) => {
+const AccountSignup = ({ enableApp, isModalVisible, clients_country, onSignup, residence_list, show_title }) => {
     const { is_dashboard } = React.useContext(PlatformContext);
     const [api_error, setApiError] = React.useState(false);
     const [is_loading, setIsLoading] = React.useState(true);
@@ -70,6 +70,7 @@ const AccountSignup = ({ enableApp, isModalVisible, clients_country, onSignup, r
 
     const onResidenceSelection = () => {
         setHasValidResidence(true);
+        show_title(false);
     };
 
     // didMount lifecycle hook
@@ -251,12 +252,18 @@ const AccountSignupModal = ({
     residence_list,
     toggleAccountSignupModal,
 }) => {
+    const [title_show, setTitleShow] = React.useState(true);
+
     React.useEffect(() => {
         // a logged in user should not be able to create a new account
         if (is_visible && is_logged_in) {
             logout();
         }
     }, [is_visible, is_logged_in, logout]);
+
+    const show_title = show => {
+        if (!show) setTitleShow(!title_show);
+    };
 
     return (
         <Dialog
@@ -266,8 +273,8 @@ const AccountSignupModal = ({
             is_loading={is_loading || !residence_list.length}
             is_mobile_full_width={false}
             is_content_centered
-            title={localize('Thanks for verifying your email')}
-            is_header_centered
+            title={title_show && localize('Thanks for verifying your email')}
+            is_signup
         >
             <AccountSignup
                 clients_country={clients_country}
@@ -275,6 +282,7 @@ const AccountSignupModal = ({
                 residence_list={residence_list}
                 isModalVisible={toggleAccountSignupModal}
                 enableApp={enableApp}
+                show_title={show_title}
             />
         </Dialog>
     );
