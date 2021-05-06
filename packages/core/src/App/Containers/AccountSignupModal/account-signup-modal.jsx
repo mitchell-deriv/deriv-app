@@ -12,7 +12,7 @@ import {
     PlatformContext,
     redirectToSignUp,
 } from '@deriv/shared';
-import { Button, Dialog, Loading, PasswordInput, PasswordMeter, Text } from '@deriv/components';
+import { Button, Dialog, Loading, PasswordInput, PasswordMeter, Text, Checkbox } from '@deriv/components';
 
 import { localize, Localize } from '@deriv/translations';
 import { WS } from 'Services';
@@ -261,10 +261,6 @@ const AccountSignupModal = ({
         }
     }, [is_visible, is_logged_in, logout]);
 
-    const show_title = show => {
-        if (!show) setTitleShow(!title_show);
-    };
-
     return (
         <Dialog
             is_visible={is_visible}
@@ -273,7 +269,7 @@ const AccountSignupModal = ({
             is_loading={is_loading || !residence_list.length}
             is_mobile_full_width={false}
             is_content_centered
-            title={title_show && localize('Thanks for verifying your email')}
+            title={title_show ? localize('Thanks for verifying your email') : ''}
             is_signup
         >
             <AccountSignup
@@ -282,7 +278,7 @@ const AccountSignupModal = ({
                 residence_list={residence_list}
                 isModalVisible={toggleAccountSignupModal}
                 enableApp={enableApp}
-                show_title={show_title}
+                show_title={() => setTitleShow(false)}
             />
         </Dialog>
     );
